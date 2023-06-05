@@ -1,0 +1,16 @@
+from keras.models import Sequential
+from keras.layers import SimpleRNN
+import numpy as np
+input_size=4
+hidden_size=5
+output_size=3
+
+model = Sequential()
+model.add(SimpleRNN(hidden_size, input_shape=(4, input_size))) 
+model.compile(loss='mean_squared_error',optimizer='adam')
+
+x=np.random.randn(4,4)
+x=np.reshape(x,(1,x.shape[0],x.shape[1]))
+y=model.predict(x)
+print("Input -",x)
+print("Output -",y)
